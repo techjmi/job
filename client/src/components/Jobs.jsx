@@ -12,7 +12,7 @@ const Jobs = () => {
     const params = new URLSearchParams(location.search);
     const searchQuery = params.get("search") || "";
     const pageNumber = Number(params.get("page")) || 1;
-    const locationQuery = params.get("location") || ""; // Extract location filter
+    const locationQuery = params.get("location") || ""; 
 
     setPage(pageNumber);
 
@@ -21,9 +21,9 @@ const Jobs = () => {
       try {
         let queryString = `page=${pageNumber}`;
         if (searchQuery) queryString += `&search=${searchQuery}`;
-        if (locationQuery) queryString += `&location=${locationQuery}`; // Apply location filter
+        if (locationQuery) queryString += `&location=${locationQuery}`; 
 
-        const response = await fetch(`http://localhost:5000/api/jobs?${queryString}`);
+        const response = await fetch(`/api/jobs?${queryString}`);
         const data = await response.json();
         setJobs(data);
       } catch (error) {
